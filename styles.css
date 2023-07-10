@@ -2,20 +2,60 @@ body {
     background-color: rgb(246, 246, 182);
     display: flex;
 }
-button {
-    height: 150px;
-    width: 150px;
+.numbers {
+    display: flex;
+    width: 100%;
+    position: absolute;
+    justify-content: space-around;
+    margin: -10px;
+    margin-top: 10px;
+    padding: -8px;
+    font-family: Roboto,  Arial, sans-serif;
+    font-weight: 600;
+    font-size: x-large;
+}
+.card {
+    height: 120px;
+    width: 120px;
     margin: 0;
     padding: 0;
+    outline: none;  
+    border: none;
+}
+.red {
+    background-color: red;
+    border: 2px solid rgb(137, 15, 15);
+}
+.purple {
+    background-color: blueviolet;
+    border: 2px solid rgb(76, 13, 135);
+}
+.white {
+    background-color: rgb(233, 233, 233);
+    border: 2px solid rgb(133, 133, 133);
+}
+.green {
+    background-color: rgb(44, 211, 44);
+    border: 2px solid green;
+}
+.orange {
+    background-color: rgb(247, 173, 46);
+    border: 2px solid rgb(143, 105, 0);
+}
+.blue {
+    background-color: rgb(30, 88, 222);
+    border: 2px solid rgb(6, 6, 141);
+}
+.hidden {
+    background-color: gray;
+    border: 2px solid rgb(77, 76, 76);
 }
 .cards-container {
-    position: absolute;
-    top: calc(20% + 245);
-    border: 1px solid red;
-    justify-content: center;
+    margin: auto;
+    margin-top: 120px;
     display: grid;
-    grid-template-columns: repeat(4, 150px);
-    grid-template-rows: repeat(3, 150px);
-    gap: 20px;
+    grid-template-columns: repeat(4, 120px);
+    grid-template-rows: repeat(3, 120px);
+    gap: 8px;
 
 }
