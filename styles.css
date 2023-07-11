@@ -50,6 +50,10 @@ body {
     background-color: gray;
     border: 2px solid rgb(77, 76, 76);
 }
+.matched {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+}
 .cards-container {
     margin: auto;
     margin-top: 120px;
