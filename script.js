@@ -1,5 +1,5 @@
-const buttons = ['1','2','3','4','5','6', '7', '8','9','10','11','12'];
-const classes = ['red', 'red', 'purple', 'purple', 'white', 'white', 'green', 'green', 'orange', 'orange', 'blue', 'blue']
+const buttons = ['1','2','3','4','5','6', '7', '8','9','10','11','12','13','14','15','16', '17','18'];
+const classes = ['red', 'red', 'purple', 'purple', 'white', 'white', 'green', 'green', 'orange', 'orange', 'blue', 'blue', 'black','black','yellow','yellow','pink', 'pink']
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
@@ -46,14 +46,55 @@ class Game{
       }
     })}
   
-  
+  gameOver(){
+    const cardButtons = document.querySelectorAll('.card')
+    let rv = 0
+    cardButtons.forEach(button =>{
+      if (!button.classList.contains('matched')){
+        rv += 1
+      }
+    })
+    return rv
+  }
+  deleteButtons(){
+    const cardButtons = document.querySelectorAll('.card')
+    const nextButton = document.querySelector('.next')
+    cardButtons.forEach(button =>{
+      button.remove()
+    })
+    nextButton.remove()
+  }
+
+  victoryText(){
+    let text = ''
+    if (this.score1 > this.score2){
+      text = 'Player 1 won!'
+    }
+    else {
+      text = 'Player 2 won!'
+    }
+    const textNode = document.createTextNode(text)
+    const pText = document.createElement('p')
+    const textDiv = document.querySelector('.text-wrapper')
+    textDiv.classList.add('victoryDiv')
+    pText.appendChild(textNode)
+    pText.classList.add('victory')
+    textDiv.appendChild(pText)
+  }
+
   flip(){
+
   let flips = 0
   const cardButtons = document.querySelectorAll('.card')
   const nextButton = document.querySelector('.next')
+  
+
   cardButtons.forEach(button => {
+    
+    
     button.addEventListener('click', () => {
       if (button.classList.contains('hidden') && flips<2){
+        
         flips += 1
         button.classList.remove('hidden')
         if (this.flipped1===''){
@@ -63,6 +104,7 @@ class Game{
           this.flipped2=button
         }
       }
+
       nextButton.addEventListener('click', () =>{
         if (flips === 2){
           this.hide()
@@ -78,13 +120,17 @@ class Game{
             else {
               this.score2 += 1
             }
-          }
-          else {
+            
+            }
             this.turn += 1
           }
+          
           this.flipped1=''
           this.flipped2=''
           this.updateDisplay()
+          if (this.gameOver()===0){
+            this.deleteButtons()
+            this.victoryText()
         }
       })
       
